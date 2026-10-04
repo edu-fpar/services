@@ -165,13 +165,17 @@
     // 6.2 Routes
 
     // GET /api/chanteurs?q=...
-    if (url.pathname === "/api/chanteurs" && method === "GET") {
-      const q = (url.searchParams.get("q") || "").toLowerCase();
-      const resultats = DB.chanteurs.filter((c) =>
-        c.nom.toLowerCase().startsWith(q)
-      );
-      return jsonResponse(filtrerListe(resultats, CHAMPS_PRO_CHANTEUR, compte.compte));
-    }
+	if (url.pathname === "/api/chanteurs" && method === "GET") {
+	  const q = url.searchParams.get("q");
+	  if (!q || q.trim() === "") {
+		return erreur(400, "Paramètre 'q' requis. Indiquez un préfixe de nom (ex : ?q=ade).");
+	  }
+	  const prefixe = q.trim().toLowerCase();
+	  const resultats = DB.chanteurs.filter((c) =>
+		c.nom.toLowerCase().startsWith(prefixe)
+	  );
+	  return jsonResponse(filtrerListe(resultats, CHAMPS_PRO_CHANTEUR, compte.compte));
+	}
 
     // GET /api/chanteurs/:id
     const matchChanteur = url.pathname.match(/^\/api\/chanteurs\/(\d+)$/);
