@@ -2,34 +2,133 @@
   {
     "id": 1,
     "nom": "Adele",
-    "photo": "https://votre-user.github.io/votre-repo/images/chanteurs/adele.jpg",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/adele.jpg",
     "pays": "Royaume-Uni",
     "genre": "Pop / Soul",
     "debutCarriere": 2006,
     "vraiNom": "Adele Laurie Blue Adkins",
     "dateNaissance": "1988-05-05",
-    "bio": "Adele est une autrice-compositrice-interprète britannique connue pour sa voix puissante et ses ballades émotionnelles. Elle a remporté de nombreux Grammy Awards."
+    "bio": "Autrice-compositrice-interprète britannique, Adele s'est imposée comme l'une des voix majeures de sa génération avec des albums comme 21 et 25. Elle cumule plus de quinze Grammy Awards."
   },
   {
     "id": 2,
     "nom": "Adèle Castillon",
-    "photo": "https://votre-user.github.io/votre-repo/images/chanteurs/adele-castillon.jpg",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/adele-castillon.jpg",
     "pays": "France",
     "genre": "Pop / Électro",
     "debutCarriere": 2018,
     "vraiNom": "Adèle Castillon",
     "dateNaissance": "2000-11-24",
-    "bio": "Adèle Castillon est une chanteuse, actrice et vidéaste française. Ancienne membre du duo Videoclub, elle poursuit désormais une carrière solo."
+    "bio": "Chanteuse, actrice et vidéaste française, Adèle Castillon s'est fait connaître avec le duo Videoclub avant de poursuivre une carrière solo mêlant pop et électro."
   },
   {
     "id": 3,
+    "nom": "Adem",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/adem.jpg",
+    "pays": "Royaume-Uni",
+    "genre": "Folk / Indie",
+    "debutCarriere": 2002,
+    "vraiNom": "Adem Ilhan",
+    "dateNaissance": "1978-01-01",
+    "bio": "Musicien britannique d'origine turque, Adem est connu pour ses reprises folk intimistes et ses compositions mélancoliques, souvent comparées à celles de Radiohead."
+  },
+  {
+    "id": 4,
     "nom": "Beyoncé",
-    "photo": "https://votre-user.github.io/votre-repo/images/chanteurs/beyonce.jpg",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/beyonce.jpg",
     "pays": "États-Unis",
     "genre": "R&B / Pop",
     "debutCarriere": 1997,
     "vraiNom": "Beyoncé Giselle Knowles-Carter",
     "dateNaissance": "1981-09-04",
-    "bio": "Beyoncé est une chanteuse, danseuse et productrice américaine. Ancienne leader des Destiny's Child, elle est l'une des artistes les plus primées de l'histoire."
+    "bio": "Chanteuse, danseuse et productrice américaine, ancienne leader des Destiny's Child, elle est l'une des artistes les plus primées de l'histoire de la musique."
+  },
+  {
+    "id": 5,
+    "nom": "Björk",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/bjork.jpg",
+    "pays": "Islande",
+    "genre": "Art pop / Électronique",
+    "debutCarriere": 1977,
+    "vraiNom": "Björk Guðmundsdóttir",
+    "dateNaissance": "1965-11-21",
+    "bio": "Chanteuse, compositrice et productrice islandaise, Björk est reconnue pour sa voix unique et son univers expérimental mêlant électronique, nature et art contemporain."
+  },
+  {
+    "id": 6,
+    "nom": "Christine and the Queens",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/christine-and-the-queens.jpg",
+    "pays": "France",
+    "genre": "Pop / Synthpop",
+    "debutCarriere": 2014,
+    "vraiNom": "Héloïse Adélaïde Letissier",
+    "dateNaissance": "1988-06-01",
+    "bio": "Artiste français connu pour ses performances scéniques et son mélange de pop, de synthpop et de textes introspectifs, souvent en français et en anglais."
+  },
+  {
+    "id": 7,
+    "nom": "Daft Punk",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/daft-punk.jpg",
+    "pays": "France",
+    "genre": "Électro / French touch",
+    "debutCarriere": 1993,
+    "vraiNom": "Thomas Bangalter & Guy-Manuel de Homem-Christo",
+    "dateNaissance": "1974-01-03",
+    "bio": "Duo français emblématique de la French touch, Daft Punk a marqué l'histoire de la musique électronique avec des albums comme Homework et Random Access Memories."
+  },
+  {
+    "id": 8,
+    "nom": "David Bowie",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/david-bowie.jpg",
+    "pays": "Royaume-Uni",
+    "genre": "Rock / Glam rock",
+    "debutCarriere": 1962,
+    "vraiNom": "David Robert Jones",
+    "dateNaissance": "1947-01-08",
+    "bio": "Icône du rock et de la pop, David Bowie a constamment réinventé son personnage et son style, influençant des générations d'artistes à travers le monde."
+  },
+  {
+    "id": 9,
+    "nom": "Dua Lipa",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/dua-lipa.jpg",
+    "pays": "Royaume-Uni",
+    "genre": "Pop / Disco",
+    "debutCarriere": 2015,
+    "vraiNom": "Dua Lipa",
+    "dateNaissance": "1995-08-22",
+    "bio": "Chanteuse britannique d'origine kosovare, Dua Lipa s'est imposée comme une figure majeure de la pop moderne avec des titres dance et des collaborations internationales."
+  },
+  {
+    "id": 10,
+    "nom": "Édith Piaf",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/edith-piaf.jpg",
+    "pays": "France",
+    "genre": "Chanson française",
+    "debutCarriere": 1935,
+    "vraiNom": "Édith Giovanna Gassion",
+    "dateNaissance": "1915-12-19",
+    "bio": "Chanteuse française emblématique, Édith Piaf a incarné la chanson réaliste et a marqué le patrimoine musical français avec des titres comme La Vie en rose."
+  },
+  {
+    "id": 11,
+    "nom": "Étienne Daho",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/etienne-daho.jpg",
+    "pays": "France",
+    "genre": "Pop / New wave",
+    "debutCarriere": 1981,
+    "vraiNom": "Étienne Daho",
+    "dateNaissance": "1956-01-14",
+    "bio": "Chanteur et producteur français, Étienne Daho est une figure de la pop française, connu pour son élégance et ses collaborations avec de nombreux artistes."
+  },
+  {
+    "id": 12,
+    "nom": "Eurythmics",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/eurythmics.jpg",
+    "pays": "Royaume-Uni",
+    "genre": "New wave / Pop",
+    "debutCarriere": 1980,
+    "vraiNom": "Annie Lennox & Dave Stewart",
+    "dateNaissance": "1954-12-25",
+    "bio": "Duo britannique formé d'Annie Lennox et Dave Stewart, Eurythmics a marqué les années 1980 avec une pop new wave élégante et des tubes planétaires."
   }
 ]

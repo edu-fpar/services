@@ -1,9 +1,21 @@
 {
-  "totalChanteurs": 3,
-  "totalAlbums": 3,
-  "totalChansons": 3,
-  "totalLyrics": 3,
+  "totalChanteurs": 12,
+  "totalAlbums": 12,
+  "totalChansons": 24,
+  "totalLyrics": 24,
   "chanteurPlusProlifique": "Adele",
-  "albumPlusLong": "Renaissance",
-  "dureeTotaleCatalogue": 9577
+  "albumPlusLong": "Random Access Memories",
+  "dureeTotaleCatalogue": 63644,
+  "genresRepresentes": [
+    "Pop",
+    "Soul",
+    "Électro",
+    "Rock",
+    "R&B",
+    "Folk",
+    "Chanson française",
+    "New wave",
+    "Art pop"
+  ],
+  "derniereMiseAJour": "2026-10-04"
 }

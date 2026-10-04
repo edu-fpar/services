@@ -28,5 +28,215 @@
     "auteur": "Adele Adkins, Paul Epworth",
     "bpm": 105,
     "tonalite": "C mineur"
+  },
+  {
+    "id": 4,
+    "titre": "Someone Like You",
+    "albumId": 2,
+    "duree": 285,
+    "numeroPiste": 2,
+    "auteur": "Adele Adkins, Dan Wilson",
+    "bpm": 67,
+    "tonalite": "A majeur"
+  },
+  {
+    "id": 5,
+    "titre": "Impala",
+    "albumId": 3,
+    "duree": 195,
+    "numeroPiste": 1,
+    "auteur": "Adèle Castillon",
+    "bpm": 118,
+    "tonalite": "D mineur"
+  },
+  {
+    "id": 6,
+    "titre": "Je t'aime encore",
+    "albumId": 3,
+    "duree": 210,
+    "numeroPiste": 2,
+    "auteur": "Adèle Castillon",
+    "bpm": 102,
+    "tonalite": "G majeur"
+  },
+  {
+    "id": 7,
+    "titre": "These Are Your Friends",
+    "albumId": 4,
+    "duree": 240,
+    "numeroPiste": 1,
+    "auteur": "Adem Ilhan",
+    "bpm": 88,
+    "tonalite": "E mineur"
+  },
+  {
+    "id": 8,
+    "titre": "Ringtone",
+    "albumId": 4,
+    "duree": 220,
+    "numeroPiste": 2,
+    "auteur": "Adem Ilhan",
+    "bpm": 92,
+    "tonalite": "A mineur"
+  },
+  {
+    "id": 9,
+    "titre": "Break My Soul",
+    "albumId": 5,
+    "duree": 278,
+    "numeroPiste": 1,
+    "auteur": "Beyoncé, Tricky Stewart",
+    "bpm": 115,
+    "tonalite": "G mineur"
+  },
+  {
+    "id": 10,
+    "titre": "Cuff It",
+    "albumId": 5,
+    "duree": 225,
+    "numeroPiste": 2,
+    "auteur": "Beyoncé, Nile Rodgers",
+    "bpm": 105,
+    "tonalite": "F majeur"
+  },
+  {
+    "id": 11,
+    "titre": "Formation",
+    "albumId": 6,
+    "duree": 210,
+    "numeroPiste": 1,
+    "auteur": "Beyoncé, Mike Dean",
+    "bpm": 115,
+    "tonalite": "C mineur"
+  },
+  {
+    "id": 12,
+    "titre": "Hold Up",
+    "albumId": 6,
+    "duree": 221,
+    "numeroPiste": 2,
+    "auteur": "Beyoncé, Diplo",
+    "bpm": 90,
+    "tonalite": "A mineur"
+  },
+  {
+    "id": 13,
+    "titre": "Jóga",
+    "albumId": 7,
+    "duree": 305,
+    "numeroPiste": 1,
+    "auteur": "Björk, Mark Bell",
+    "bpm": 84,
+    "tonalite": "E mineur"
+  },
+  {
+    "id": 14,
+    "titre": "Bachelorette",
+    "albumId": 7,
+    "duree": 337,
+    "numeroPiste": 2,
+    "auteur": "Björk, Sjón",
+    "bpm": 90,
+    "tonalite": "D mineur"
+  },
+  {
+    "id": 15,
+    "titre": "Damn, dis-moi",
+    "albumId": 8,
+    "duree": 208,
+    "numeroPiste": 1,
+    "auteur": "Christine and the Queens",
+    "bpm": 118,
+    "tonalite": "B mineur"
+  },
+  {
+    "id": 16,
+    "titre": "La marcheuse",
+    "albumId": 8,
+    "duree": 227,
+    "numeroPiste": 2,
+    "auteur": "Christine and the Queens",
+    "bpm": 112,
+    "tonalite": "A mineur"
+  },
+  {
+    "id": 17,
+    "titre": "One More Time",
+    "albumId": 9,
+    "duree": 320,
+    "numeroPiste": 1,
+    "auteur": "Thomas Bangalter, Guy-Manuel de Homem-Christo, Romanthony",
+    "bpm": 123,
+    "tonalite": "F majeur"
+  },
+  {
+    "id": 18,
+    "titre": "Harder, Better, Faster, Stronger",
+    "albumId": 9,
+    "duree": 224,
+    "numeroPiste": 2,
+    "auteur": "Thomas Bangalter, Guy-Manuel de Homem-Christo, Edwin Birdsong",
+    "bpm": 123,
+    "tonalite": "D mineur"
+  },
+  {
+    "id": 19,
+    "titre": "Get Lucky",
+    "albumId": 10,
+    "duree": 369,
+    "numeroPiste": 1,
+    "auteur": "Daft Punk, Pharrell Williams, Nile Rodgers",
+    "bpm": 116,
+    "tonalite": "F# mineur"
+  },
+  {
+    "id": 20,
+    "titre": "Instant Crush",
+    "albumId": 10,
+    "duree": 337,
+    "numeroPiste": 2,
+    "auteur": "Daft Punk, Julian Casablancas",
+    "bpm": 115,
+    "tonalite": "A mineur"
+  },
+  {
+    "id": 21,
+    "titre": "Heroes",
+    "albumId": 11,
+    "duree": 371,
+    "numeroPiste": 1,
+    "auteur": "David Bowie, Brian Eno",
+    "bpm": 106,
+    "tonalite": "D majeur"
+  },
+  {
+    "id": 22,
+    "titre": "Beauty and the Beast",
+    "albumId": 11,
+    "duree": 213,
+    "numeroPiste": 2,
+    "auteur": "David Bowie",
+    "bpm": 96,
+    "tonalite": "C majeur"
+  },
+  {
+    "id": 23,
+    "titre": "Don't Start Now",
+    "albumId": 12,
+    "duree": 183,
+    "numeroPiste": 1,
+    "auteur": "Dua Lipa, Caroline Ailin, Ian Kirkpatrick",
+    "bpm": 124,
+    "tonalite": "B mineur"
+  },
+  {
+    "id": 24,
+    "titre": "Levitating",
+    "albumId": 12,
+    "duree": 203,
+    "numeroPiste": 2,
+    "auteur": "Dua Lipa, Clarence Coffee Jr., Sarah Hudson",
+    "bpm": 103,
+    "tonalite": "A mineur"
   }
 ]
