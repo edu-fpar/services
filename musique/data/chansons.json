@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "titre": "Hello",
+    "albumId": 1,
+    "duree": 295,
+    "numeroPiste": 1,
+    "auteur": "Adele Adkins, Greg Kurstin",
+    "bpm": 79,
+    "tonalite": "F mineur"
+  },
+  {
+    "id": 2,
+    "titre": "Easy On Me",
+    "albumId": 1,
+    "duree": 224,
+    "numeroPiste": 2,
+    "auteur": "Adele Adkins, Greg Kurstin",
+    "bpm": 71,
+    "tonalite": "F majeur"
+  },
+  {
+    "id": 3,
+    "titre": "Rolling in the Deep",
+    "albumId": 2,
+    "duree": 228,
+    "numeroPiste": 1,
+    "auteur": "Adele Adkins, Paul Epworth",
+    "bpm": 105,
+    "tonalite": "C mineur"
+  }
+]

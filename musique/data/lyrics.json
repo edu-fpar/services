@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "chansonId": 1,
+    "texte": "Hello, it's me\nI was wondering if after all these years\nYou'd like to meet...",
+    "langue": "en",
+    "auteurParoles": "Adele Adkins",
+    "anneeCopyright": 2015
+  },
+  {
+    "id": 2,
+    "chansonId": 2,
+    "texte": "There ain't no gold in this river\nThat I've been washin' my hands in forever...",
+    "langue": "en",
+    "auteurParoles": "Adele Adkins",
+    "anneeCopyright": 2021
+  },
+  {
+    "id": 3,
+    "chansonId": 3,
+    "texte": "There's a fire starting in my heart\nReaching a fever pitch and it's bringing me out the dark...",
+    "langue": "en",
+    "auteurParoles": "Adele Adkins, Paul Epworth",
+    "anneeCopyright": 2010
+  }
+]

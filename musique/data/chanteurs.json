@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "nom": "Adele",
+    "photo": "https://votre-user.github.io/votre-repo/images/chanteurs/adele.jpg",
+    "pays": "Royaume-Uni",
+    "genre": "Pop / Soul",
+    "debutCarriere": 2006,
+    "vraiNom": "Adele Laurie Blue Adkins",
+    "dateNaissance": "1988-05-05",
+    "bio": "Adele est une autrice-compositrice-interprète britannique connue pour sa voix puissante et ses ballades émotionnelles. Elle a remporté de nombreux Grammy Awards."
+  },
+  {
+    "id": 2,
+    "nom": "Adèle Castillon",
+    "photo": "https://votre-user.github.io/votre-repo/images/chanteurs/adele-castillon.jpg",
+    "pays": "France",
+    "genre": "Pop / Électro",
+    "debutCarriere": 2018,
+    "vraiNom": "Adèle Castillon",
+    "dateNaissance": "2000-11-24",
+    "bio": "Adèle Castillon est une chanteuse, actrice et vidéaste française. Ancienne membre du duo Videoclub, elle poursuit désormais une carrière solo."
+  },
+  {
+    "id": 3,
+    "nom": "Beyoncé",
+    "photo": "https://votre-user.github.io/votre-repo/images/chanteurs/beyonce.jpg",
+    "pays": "États-Unis",
+    "genre": "R&B / Pop",
+    "debutCarriere": 1997,
+    "vraiNom": "Beyoncé Giselle Knowles-Carter",
+    "dateNaissance": "1981-09-04",
+    "bio": "Beyoncé est une chanteuse, danseuse et productrice américaine. Ancienne leader des Destiny's Child, elle est l'une des artistes les plus primées de l'histoire."
+  }
+]

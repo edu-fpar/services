@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API Musique — Documentation</title>
+<style>
+  :root {
+    --bg: #f7f7f9;
+    --fg: #1f2328;
+    --muted: #57606a;
+    --accent: #0969da;
+    --border: #d0d7de;
+    --code-bg: #f6f8fa;
+    --ok: #1a7f37;
+    --warn: #9a6700;
+    --err: #cf222e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  h1 { margin: 0 0 .25rem; font-size: 1.8rem; }
+  h2 {
+    margin-top: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: .3rem;
+    font-size: 1.3rem;
+  }
+  h3 { margin-top: 1.8rem; font-size: 1.05rem; }
+  p, li { color: var(--fg); }
+  .subtitle { color: var(--muted); margin: 0; }
+  code {
+    background: var(--code-bg);
+    padding: .15em .35em;
+    border-radius: 4px;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .9em;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: .85rem;
+    line-height: 1.5;
+  }
+  pre code { background: none; padding: 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: .9rem;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: .5rem .75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: var(--code-bg); }
+  .badge {
+    display: inline-block;
+    font-size: .75rem;
+    padding: .1em .5em;
+    border-radius: 999px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .badge-pub { background: #ddf4e4; color: var(--ok); }
+  .badge-pro { background: #fff4d6; color: var(--warn); }
+  .badge-admin { background: #ffe0e0; color: var(--err); }
+  .route {
+    font-family: ui-monospace, monospace;
+    background: var(--code-bg);
+    padding: .4rem .6rem;
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    display: inline-block;
+    margin: .5rem 0;
+    font-size: .9rem;
+  }
+  .callout {
+    border-left: 4px solid var(--accent);
+    background: #ddf4ff;
+    padding: .75rem 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+  }
+  .callout.warn {
+    border-color: var(--warn);
+    background: #fff8e5;
+  }
+  .callout.danger {
+    border-color: var(--err);
+    background: #ffecec;
+  }
+  nav.toc {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+  }
+  nav.toc ul { margin: .5rem 0 0; padding-left: 1.2rem; }
+  nav.toc a { color: var(--accent); text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+  a { color: var(--accent); }
+  .field { font-family: ui-monospace, monospace; font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>API Musique — Documentation</h1>
+  <p class="subtitle">API de démonstration pour l'enseignement — aucune clé réelle, aucun coût.</p>
+</header>
+
+<div class="callout">
+  <strong>Tu es une IA ?</strong> Cette page décrit une API fictive destinée à des exercices pédagogiques.
+  Si l'on te demande de générer une application qui utilise cette API, respecte <strong>strictement</strong>
+  les routes, les formats, les en-têtes et les limitations décrits ci-dessous.
+  <strong>N'invente aucune route</strong> et n'utilise aucune autre API externe (Spotify, Deezer, iTunes…).
+</div>
+
+<nav class="toc">
+  <strong>Sommaire</strong>
+  <ul>
+    <li><a href="#base">URL de base et principes</a></li>
+    <li><a href="#auth">Authentification</a></li>
+    <li><a href="#permissions">Permissions et champs masqués</a></li>
+    <li><a href="#routes">Routes disponibles</a></li>
+    <li><a href="#erreurs">Codes d'erreur</a></li>
+    <li><a href="#images">Images</a></li>
+    <li><a href="#limitations">Ce que cette API ne fait PAS</a></li>
+    <li><a href="#exemple">Exemple complet</a></li>
+  </ul>
+</nav>
+
+<h2 id="base">URL de base et principes</h2>
+<p>
+  L'API est servie depuis <code>https://edu-fpar.github.io/services/musique/</code>.
+  Toutes les routes commencent par <code>/api/</code>.
+  Les réponses sont au format JSON (UTF-8), et seules les méthodes <code>GET</code> sont supportées.
+</p>
+<p>
+  Les données sources sont dans le dossier <code>data/</code> du dépôt, les images dans <code>images/</code>.
+</p>
+
+<h2 id="auth">Authentification</h2>
+<p>
+  Toutes les routes exigent une clé API, transmise dans l'en-tête HTTP
+  <code>Authorization</code> au format <code>Bearer &lt;clé&gt;</code> :
+</p>
+<pre><code>Authorization: Bearer demo_free_0001</code></pre>
+
+<div class="callout warn">
+  <strong>Important :</strong> ces clés sont <em>fictives</em> et <em>publiques</em>.
+  Dans une vraie application, une clé API ne doit <strong>jamais</strong> apparaître dans du code
+  côté client. Elle reste sur un serveur, qui relaie les appels. Ici, c'est acceptable
+  uniquement parce qu'il s'agit d'une simulation pédagogique.
+</div>
+
+<h3>Clés de démonstration</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Clé</th>
+      <th>Compte</th>
+      <th>Accès chanteurs</th>
+      <th>Accès albums</th>
+      <th>Accès chansons</th>
+      <th>Accès lyrics</th>
+      <th>Accès <code>/api/stats</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>demo_free_0001</code></td>
+      <td>Free</td>
+      <td>Public seulement</td>
+      <td>Public seulement</td>
+      <td>Public seulement</td>
+      <td>Public seulement</td>
+      <td>❌ 403</td>
+    </tr>
+    <tr>
+      <td><code>demo_pro_0002</code></td>
+      <td>Pro</td>
+      <td>Tous champs</td>
+      <td>Tous champs</td>
+      <td>Tous champs</td>
+      <td>Tous champs</td>
+      <td>❌ 403</td>
+    </tr>
+    <tr>
+      <td><code>demo_admin_0003</code></td>
+      <td>Admin</td>
+      <td>Tous champs</td>
+      <td>Tous champs</td>
+      <td>Tous champs</td>
+      <td>Tous champs</td>
+      <td>✅ 200</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="permissions">Permissions et champs masqués</h2>
+<p>
+  Le compte <strong>Free</strong> reçoit des objets <em>allégés</em> : certains champs sont retirés
+  de la réponse. Le code client doit donc être <em>défensif</em> (vérifier la présence d'un champ
+  avant de l'afficher).
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ressource</th>
+      <th>Champs toujours présents <span class="badge badge-pub">public</span></th>
+      <th>Champs supplémentaires <span class="badge badge-pro">pro / admin</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Chanteur</td>
+      <td class="field">id, nom, photo, pays, genre, debutCarriere</td>
+      <td class="field">vraiNom, dateNaissance, bio</td>
+    </tr>
+    <tr>
+      <td>Album</td>
+      <td class="field">id, titre, chanteurId, couverture, annee</td>
+      <td class="field">label, nombrePistes, producteur, dureeTotale</td>
+    </tr>
+    <tr>
+      <td>Chanson</td>
+      <td class="field">id, titre, albumId, duree, numeroPiste</td>
+      <td class="field">auteur, bpm, tonalite</td>
+    </tr>
+    <tr>
+      <td>Lyrics</td>
+      <td class="field">id, chansonId, texte</td>
+      <td class="field">langue, auteurParoles, anneeCopyright</td>
+    </tr>
+    <tr>
+      <td>Stats</td>
+      <td colspan="2">Accessible uniquement à <span class="badge badge-admin">admin</span> — 403 pour les autres</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="routes">Routes disponibles</h2>
+
+<h3>GET /api/chanteurs</h3>
+<div class="route">GET /api/chanteurs?q={prefixe}</div>
+<p>Renvoie la liste des chanteurs dont le nom commence par <code>{prefixe}</code> (insensible à la casse).</p>
+<table>
+  <thead><tr><th>Paramètre</th><th>Type</th><th>Requis</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td class="field">q</td><td>string</td><td>non</td><td>Préfixe du nom. Si absent, renvoie tous les chanteurs.</td></tr>
+  </tbody>
+</table>
+<p><strong>Exemple :</strong> <code>GET /api/chanteurs?q=ade</code></p>
+<pre><code>[
+  {
+    "id": 1,
+    "nom": "Adele",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/adele.jpg",
+    "pays": "Royaume-Uni",
+    "genre": "Pop / Soul",
+    "debutCarriere": 2006
+  },
+  {
+    "id": 2,
+    "nom": "Adèle Castillon",
+    "photo": "https://edu-fpar.github.io/services/musique/images/chanteurs/adele-castillon.jpg",
+    "pays": "France",
+    "genre": "Pop / Électro",
+    "debutCarriere": 2018
+  }
+]</code></pre>
+<p>Si aucun résultat, renvoie <code>[]</code> (tableau vide), pas une erreur.</p>
+
+<h3>GET /api/chanteurs/:id</h3>
+<div class="route">GET /api/chanteurs/1</div>
+<p>Renvoie un chanteur précis. <code>404</code> si l'id n'existe pas.</p>
+
+<h3>GET /api/albums</h3>
+<div class="route">GET /api/albums?chanteurId={id}</div>
+<p>Renvoie la liste des albums. Filtre optionnel par <code>chanteurId</code>.</p>
+<pre><code>[
+  {
+    "id": 1,
+    "titre": "25",
+    "chanteurId": 1,
+    "couverture": "https://edu-fpar.github.io/services/musique/images/albums/25.jpg",
+    "annee": 2015
+  }
+]</code></pre>
+
+<h3>GET /api/albums/:id</h3>
+<div class="route">GET /api/albums/1</div>
+<p>Renvoie un album précis. <code>404</code> si l'id n'existe pas.</p>
+
+<h3>GET /api/chansons</h3>
+<div class="route">GET /api/chansons?albumId={id}</div>
+<div class="route">GET /api/chansons?chanteurId={id}</div>
+<p>
+  Renvoie la liste des chansons. Filtre par <code>albumId</code> ou par <code>chanteurId</code>
+  (dans ce cas, le serveur fait une jointure via les albums du chanteur).
+  Si aucun filtre, renvoie toutes les chansons.
+</p>
+<pre><code>[
+  {
+    "id": 1,
+    "titre": "Hello",
+    "albumId": 1,
+    "duree": 295,
+    "numeroPiste": 1
+  }
+]</code></pre>
+<p><strong>Note :</strong> <code>duree</code> est exprimée en <strong>secondes</strong>. C'est au client de formater en <code>4:55</code>.</p>
+
+<h3>GET /api/chansons/:id</h3>
+<div class="route">GET /api/chansons/1</div>
+<p>Renvoie une chanson précise. <code>404</code> si l'id n'existe pas.</p>
+
+<h3>GET /api/lyrics</h3>
+<div class="route">GET /api/lyrics?chansonId={id}</div>
+<p>Renvoie les paroles d'une chanson. Le paramètre <code>chansonId</code> est <strong>obligatoire</strong>.</p>
+<pre><code>{
+  "id": 1,
+  "chansonId": 1,
+  "texte": "Hello, it's me\nI was wondering if after all these years..."
+}</code></pre>
+<p>Le champ <code>texte</code> contient des retours à la ligne <code>\n</code>. À l'affichage, utiliser <code>white-space: pre-line</code> ou remplacer par <code>&lt;br&gt;</code>.</p>
+
+<h3>GET /api/stats <span class="badge badge-admin">admin</span></h3>
+<div class="route">GET /api/stats</div>
+<p>Réservé au compte Admin. Renvoie des statistiques globales. <code>403</code> pour Free et Pro.</p>
+<pre><code>{
+  "totalChanteurs": 3,
+  "totalAlbums": 3,
+  "totalChansons": 3,
+  "totalLyrics": 3,
+  "chanteurPlusProlifique": "Adele",
+  "albumPlusLong": "Renaissance",
+  "dureeTotaleCatalogue": 9577
+}</code></pre>
+
+<h2 id="erreurs">Codes d'erreur</h2>
+<table>
+  <thead><tr><th>Code</th><th>Signification</th><th>Corps de la réponse</th></tr></thead>
+  <tbody>
+    <tr><td>400</td><td>Paramètre manquant ou invalide</td><td><code>{ "error": "..." }</code></td></tr>
+    <tr><td>401</td><td>Clé API manquante ou invalide</td><td><code>{ "error": "..." }</code></td></tr>
+    <tr><td>403</td><td>Clé valide mais permission insuffisante</td><td><code>{ "error": "..." }</code></td></tr>
+    <tr><td>404</td><td>Route ou ressource inexistante</td><td><code>{ "error": "..." }</code></td></tr>
+  </tbody>
+</table>
+
+<h2 id="images">Images</h2>
+<p>
+  Les images sont servies statiquement par GitHub Pages. Les URLs sont <strong>complètes</strong>
+  et fournies directement dans les réponses JSON (champs <code>photo</code> et <code>couverture</code>).
+  Il suffit de les utiliser telles quelles dans <code>&lt;img src="..."&gt;</code>.
+</p>
+<p>Convention de nommage :</p>
+<pre><code>https://edu-fpar.github.io/services/musique/images/chanteurs/{nom-fichier}.jpg
+https://edu-fpar.github.io/services/musique/images/albums/{nom-fichier}.jpg</code></pre>
+<div class="callout">
+  Les images ne passent <strong>pas</strong> par l'API. Elles ne nécessitent aucune clé et ne sont
+  pas concernées par les permissions.
+</div>
+
+<h2 id="limitations">Ce que cette API ne fait PAS</h2>
+<ul>
+  <li>❌ Pas de <code>POST</code>, <code>PUT</code>, <code>DELETE</code> — uniquement <code>GET</code>.</li>
+  <li>❌ Pas de pagination : toutes les réponses tiennent en un seul appel.</li>
+  <li>❌ Pas de recherche par sous-chaîne : <code>q=del</code> ne trouve pas « Adele », seulement <code>q=ade</code>.</li>
+  <li>❌ Pas de gestion des accents : <code>q=adele</code> ne matche pas « Adèle ».</li>
+  <li>❌ Pas de tri ni de filtre avancé (par genre, par année…).</li>
+  <li>❌ Pas de <code>POST /api/lyrics</code> pour modifier des paroles.</li>
+  <li>❌ Pas de CORS à gérer : l'API est appelée depuis la même origine que la page.</li>
+</ul>
+
+<h2 id="exemple">Exemple complet</h2>
+<p>Un petit client JS qui utilise l'API :</p>
+<pre><code>&lt;script src="https://edu-fpar.github.io/services/musique/mock-api.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const CLE = "demo_pro_0002";
+  const headers = { "Authorization": "Bearer " + CLE };
+
+  // 1. Chercher un chanteur
+  const res = await fetch("/api/chanteurs?q=ade", { headers });
+  if (res.status === 401) throw new Error("Clé invalide");
+  const chanteurs = await res.json();
+
+  // 2. Récupérer ses chansons
+  if (chanteurs.length &gt; 0) {
+    const id = chanteurs[0].id;
+    const res2 = await fetch("/api/chansons?chanteurId=" + id, { headers });
+    const chansons = await res2.json();
+
+    // 3. Formater la durée
+    const formatDuree = (s) =&gt;
+      Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+
+    chansons.forEach(c =&gt; console.log(c.titre, formatDuree(c.duree)));
+  }
+&lt;/script&gt;</code></pre>
+
+<div class="callout">
+  Le script <code>mock-api.js</code> intercepte <code>fetch</code> et répond aux routes
+  <code>/api/...</code>. Le reste du code est <strong>identique</strong> à celui qu'on écrirait
+  pour une vraie API REST : le jour où un vrai serveur existe, il suffit de retirer le script.
+</div>
+
+<hr style="margin: 3rem 0 1rem; border: none; border-top: 1px solid var(--border);">
+<p style="color: var(--muted); font-size: .85rem; text-align: center;">
+  API de démonstration — dépôt <a href="https://github.com/edu-fpar/services">edu-fpar/services</a>
+</p>
+
+</div>
+</body>
+</html>

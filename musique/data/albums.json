@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "titre": "25",
+    "chanteurId": 1,
+    "couverture": "https://votre-user.github.io/votre-repo/images/albums/25.jpg",
+    "annee": 2015,
+    "label": "XL Recordings",
+    "nombrePistes": 11,
+    "producteur": "Greg Kurstin",
+    "dureeTotale": 2957
+  },
+  {
+    "id": 2,
+    "titre": "21",
+    "chanteurId": 1,
+    "couverture": "https://votre-user.github.io/votre-repo/images/albums/21.jpg",
+    "annee": 2011,
+    "label": "XL Recordings",
+    "nombrePistes": 11,
+    "producteur": "Rick Rubin",
+    "dureeTotale": 2884
+  },
+  {
+    "id": 3,
+    "titre": "Renaissance",
+    "chanteurId": 3,
+    "couverture": "https://votre-user.github.io/votre-repo/images/albums/renaissance.jpg",
+    "annee": 2022,
+    "label": "Parkwood / Columbia",
+    "nombrePistes": 16,
+    "producteur": "Beyoncé",
+    "dureeTotale": 3736
+  }
+]
