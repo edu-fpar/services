@@ -1,21 +1,5 @@
 {
-  "totalChanteurs": 12,
-  "totalAlbums": 12,
-  "totalChansons": 24,
-  "totalLyrics": 24,
-  "chanteurPlusProlifique": "Adele",
-  "albumPlusLong": "Random Access Memories",
-  "dureeTotaleCatalogue": 63644,
-  "genresRepresentes": [
-    "Pop",
-    "Soul",
-    "Électro",
-    "Rock",
-    "R&B",
-    "Folk",
-    "Chanson française",
-    "New wave",
-    "Art pop"
-  ],
-  "derniereMiseAJour": "2026-10-04"
+  "v": 1,
+  "algo": "xor+b64",
+  "data": "Fn9TSVMBClkECDZFBx4VFxgHAEtLVVQfSW5VDUQEDgYMGTIFEwAIXkdeVRxUXGtSTVcHBgUUCW4NBRteCR4SUFdVQV1df0UNRxAaWQccLQsfHBAaU09FH1FIfw1GUgIaDBsHDAQHNUEQFyVfCRwIFAQEBgxTT0UPJAAQQQNSTXhNVVEIHRcQQDUIAF4qHw8VT09TSyMUC0kKCVVsBRMEAR5VPgwcGhdEABdXAWxQQVAJAAEMFCEKWQQIEG4HBAAeAhIGDFNPRRtWUkEZSnpBUk8SFgcDEBZ/ABQHSBUVDwYIBlFTUS5vDUVEVQ82HxFQQX9TSVFVR34KERkPSnpBUk1VUar4GQBOERYaD0p6QVJNVVE7HhYOD0luVQ1GUEMgSzdRRXtVRQ1FRjNCChtDXmdVU0lRVyZFBAoGQghQBwAMG7DOEBwWSEdIfw1GUEFQIxAESQYUE0hHSH8NRlBBUCwHB0kBGhUPb0RVcEp6QVJPERYbHxwAXwApHF4DMSsdGAdRU1FXVx1XUlgcVl1RRk9/Dg=="
 }
