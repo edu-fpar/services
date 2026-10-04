@@ -25,7 +25,7 @@
     line-height: 1.6;
   }
   .container {
-    max-width: 900px;
+    max-width: 920px;
     margin: 0 auto;
     padding: 2rem 1.5rem 5rem;
   }
@@ -85,6 +85,7 @@
   .badge-pub { background: #ddf4e4; color: var(--ok); }
   .badge-pro { background: #fff4d6; color: var(--warn); }
   .badge-admin { background: #ffe0e0; color: var(--err); }
+  .badge-required { background: #ffe0e0; color: var(--err); font-size: .7rem; }
   .route {
     font-family: ui-monospace, monospace;
     background: var(--code-bg);
@@ -121,6 +122,17 @@
   nav.toc a:hover { text-decoration: underline; }
   a { color: var(--accent); }
   .field { font-family: ui-monospace, monospace; font-size: .85rem; }
+  .status-400 { color: var(--warn); font-weight: 600; }
+  hr {
+    margin: 3rem 0 1rem;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+  footer {
+    color: var(--muted);
+    font-size: .85rem;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
@@ -147,6 +159,7 @@
     <li><a href="#routes">Routes disponibles</a></li>
     <li><a href="#erreurs">Codes d'erreur</a></li>
     <li><a href="#images">Images</a></li>
+    <li><a href="#securite">Note sur la sécurité</a></li>
     <li><a href="#limitations">Ce que cette API ne fait PAS</a></li>
     <li><a href="#exemple">Exemple complet</a></li>
   </ul>
@@ -159,7 +172,8 @@
   Les réponses sont au format JSON (UTF-8), et seules les méthodes <code>GET</code> sont supportées.
 </p>
 <p>
-  Les données sources sont dans le dossier <code>data/</code> du dépôt, les images dans <code>images/</code>.
+  Les données sont servies depuis le dossier <code>data/</code> du dépôt, les images depuis <code>images/</code>.
+  Ces fichiers ne sont pas destinés à être lus directement par votre application : passez toujours par l'API.
 </p>
 
 <h2 id="auth">Authentification</h2>
@@ -170,33 +184,37 @@
 <pre><code>Authorization: Bearer demo_free_0001</code></pre>
 
 <div class="callout warn">
-  <strong>Important :</strong> ces clés sont <em>fictives</em> et <em>publiques</em>.
+  <strong>Important :</strong> ces clés sont <em>fictives</em> et destinées à un usage pédagogique.
   Dans une vraie application, une clé API ne doit <strong>jamais</strong> apparaître dans du code
   côté client. Elle reste sur un serveur, qui relaie les appels. Ici, c'est acceptable
-  uniquement parce qu'il s'agit d'une simulation pédagogique.
+  uniquement parce qu'il s'agit d'une simulation.
 </div>
 
 <h3>Clés de démonstration</h3>
+<p>
+  Ces clés vous sont fournies par l'enseignant. Elles ne sont pas lisibles en clair dans le code du mock :
+  elles y sont <em>obfusquées</em> (voir <a href="#securite">Note sur la sécurité</a>).
+</p>
 <table>
   <thead>
     <tr>
       <th>Clé</th>
       <th>Compte</th>
-      <th>Accès chanteurs</th>
-      <th>Accès albums</th>
-      <th>Accès chansons</th>
-      <th>Accès lyrics</th>
-      <th>Accès <code>/api/stats</code></th>
+      <th>Chanteurs</th>
+      <th>Albums</th>
+      <th>Chansons</th>
+      <th>Lyrics</th>
+      <th><code>/api/stats</code></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><code>demo_free_0001</code></td>
       <td>Free</td>
-      <td>Public seulement</td>
-      <td>Public seulement</td>
-      <td>Public seulement</td>
-      <td>Public seulement</td>
+      <td>Champs publics</td>
+      <td>Champs publics</td>
+      <td>Champs publics</td>
+      <td>Champs publics</td>
       <td>❌ 403</td>
     </tr>
     <tr>
@@ -267,11 +285,23 @@
 
 <h3>GET /api/chanteurs</h3>
 <div class="route">GET /api/chanteurs?q={prefixe}</div>
-<p>Renvoie la liste des chanteurs dont le nom commence par <code>{prefixe}</code> (insensible à la casse).</p>
+<p>
+  Renvoie la liste des chanteurs dont le nom commence par <code>{prefixe}</code>
+  (insensible à la casse). <strong>Le paramètre <code>q</code> est obligatoire.</strong>
+</p>
 <table>
-  <thead><tr><th>Paramètre</th><th>Type</th><th>Requis</th><th>Description</th></tr></thead>
+  <thead>
+    <tr>
+      <th>Paramètre</th><th>Type</th><th>Requis</th><th>Description</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td class="field">q</td><td>string</td><td>non</td><td>Préfixe du nom. Si absent, renvoie tous les chanteurs.</td></tr>
+    <tr>
+      <td class="field">q</td>
+      <td>string</td>
+      <td><span class="badge badge-required">oui</span></td>
+      <td>Préfixe du nom. Si absent ou vide → <span class="status-400">400</span>.</td>
+    </tr>
   </tbody>
 </table>
 <p><strong>Exemple :</strong> <code>GET /api/chanteurs?q=ade</code></p>
@@ -293,7 +323,11 @@
     "debutCarriere": 2018
   }
 ]</code></pre>
-<p>Si aucun résultat, renvoie <code>[]</code> (tableau vide), pas une erreur.</p>
+
+<p><strong>Exemple de réponse 400 :</strong></p>
+<pre><code>{ "error": "Paramètre 'q' requis. Indiquez un préfixe de nom (ex : ?q=ade)." }</code></pre>
+
+<p>Si le préfixe ne correspond à aucun chanteur, renvoie <code>[]</code> (tableau vide), pas une erreur.</p>
 
 <h3>GET /api/chanteurs/:id</h3>
 <div class="route">GET /api/chanteurs/1</div>
@@ -322,7 +356,7 @@
 <p>
   Renvoie la liste des chansons. Filtre par <code>albumId</code> ou par <code>chanteurId</code>
   (dans ce cas, le serveur fait une jointure via les albums du chanteur).
-  Si aucun filtre, renvoie toutes les chansons.
+  Si aucun filtre n'est fourni, renvoie toutes les chansons.
 </p>
 <pre><code>[
   {
@@ -347,29 +381,52 @@
   "chansonId": 1,
   "texte": "Hello, it's me\nI was wondering if after all these years..."
 }</code></pre>
-<p>Le champ <code>texte</code> contient des retours à la ligne <code>\n</code>. À l'affichage, utiliser <code>white-space: pre-line</code> ou remplacer par <code>&lt;br&gt;</code>.</p>
+<p>
+  Le champ <code>texte</code> contient des retours à la ligne <code>\n</code>.
+  À l'affichage, utiliser <code>white-space: pre-line</code> ou remplacer par <code>&lt;br&gt;</code>.
+</p>
 
 <h3>GET /api/stats <span class="badge badge-admin">admin</span></h3>
 <div class="route">GET /api/stats</div>
 <p>Réservé au compte Admin. Renvoie des statistiques globales. <code>403</code> pour Free et Pro.</p>
 <pre><code>{
-  "totalChanteurs": 3,
-  "totalAlbums": 3,
-  "totalChansons": 3,
-  "totalLyrics": 3,
+  "totalChanteurs": 12,
+  "totalAlbums": 12,
+  "totalChansons": 24,
+  "totalLyrics": 24,
   "chanteurPlusProlifique": "Adele",
-  "albumPlusLong": "Renaissance",
-  "dureeTotaleCatalogue": 9577
+  "albumPlusLong": "Random Access Memories",
+  "dureeTotaleCatalogue": 63644,
+  "genresRepresentes": ["Pop", "Soul", "Électro", "..."],
+  "derniereMiseAJour": "2026-10-04"
 }</code></pre>
 
 <h2 id="erreurs">Codes d'erreur</h2>
 <table>
-  <thead><tr><th>Code</th><th>Signification</th><th>Corps de la réponse</th></tr></thead>
+  <thead>
+    <tr><th>Code</th><th>Signification</th><th>Corps de la réponse</th></tr>
+  </thead>
   <tbody>
-    <tr><td>400</td><td>Paramètre manquant ou invalide</td><td><code>{ "error": "..." }</code></td></tr>
-    <tr><td>401</td><td>Clé API manquante ou invalide</td><td><code>{ "error": "..." }</code></td></tr>
-    <tr><td>403</td><td>Clé valide mais permission insuffisante</td><td><code>{ "error": "..." }</code></td></tr>
-    <tr><td>404</td><td>Route ou ressource inexistante</td><td><code>{ "error": "..." }</code></td></tr>
+    <tr>
+      <td>400</td>
+      <td>Paramètre manquant ou invalide (ex. <code>q</code> absent sur <code>/api/chanteurs</code>)</td>
+      <td><code>{ "error": "..." }</code></td>
+    </tr>
+    <tr>
+      <td>401</td>
+      <td>Clé API manquante ou invalide</td>
+      <td><code>{ "error": "..." }</code></td>
+    </tr>
+    <tr>
+      <td>403</td>
+      <td>Clé valide mais permission insuffisante</td>
+      <td><code>{ "error": "..." }</code></td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>Route ou ressource inexistante</td>
+      <td><code>{ "error": "..." }</code></td>
+    </tr>
   </tbody>
 </table>
 
@@ -380,22 +437,48 @@
   Il suffit de les utiliser telles quelles dans <code>&lt;img src="..."&gt;</code>.
 </p>
 <p>Convention de nommage :</p>
-<pre><code>https://edu-fpar.github.io/services/musique/images/chanteurs/{nom-fichier}.jpg
-https://edu-fpar.github.io/services/musique/images/albums/{nom-fichier}.jpg</code></pre>
+<pre><code>https://edu-fpar.github.io/services/musique/images/chanteurs/{slug}.jpg
+https://edu-fpar.github.io/services/musique/images/albums/{slug}.jpg</code></pre>
+<p>
+  où <code>{slug}</code> est le nom ou le titre en minuscules, sans accents, avec les espaces remplacés par des tirets
+  (par exemple <code>adele-castillon.jpg</code>, <code>random-access-memories.jpg</code>).
+</p>
 <div class="callout">
   Les images ne passent <strong>pas</strong> par l'API. Elles ne nécessitent aucune clé et ne sont
-  pas concernées par les permissions.
+  pas concernées par les permissions. Le fait qu'elles soient accessibles sans authentification est
+  volontaire : c'est un choix courant pour les assets statiques.
 </div>
+
+<h2 id="securite">Note sur la sécurité</h2>
+<div class="callout warn">
+  <strong>Ce mock n'est pas sécurisé, et ne cherche pas à l'être.</strong>
+  Les clés API et les données sont <em>obfusquées</em> (XOR + base64) dans le fichier <code>mock-api.js</code>
+  et dans le dossier <code>data/</code>. La clé d'obfuscation est présente dans le code, donc publiquement lisible.
+</div>
+<p>
+  Ce dispositif vise uniquement à :
+</p>
+<ul>
+  <li>Décourager la lecture directe du code et des fichiers de données.</li>
+  <li>Empêcher un copier-coller naïf des JSON bruts.</li>
+  <li>Illustrer concrètement pourquoi <strong>l'obfuscation n'est pas de la sécurité</strong>.</li>
+</ul>
+<p>
+  Toute personne motivée peut décoder ces données en quelques minutes, en lisant <code>mock-api.js</code>.
+  C'est <strong>exactement</strong> la leçon à retenir : <em>côté client, il n'y a pas de secret</em>.
+  Un vrai backend ne s'appuie jamais sur l'obfuscation pour protéger ses données ou ses clés.
+</p>
 
 <h2 id="limitations">Ce que cette API ne fait PAS</h2>
 <ul>
   <li>❌ Pas de <code>POST</code>, <code>PUT</code>, <code>DELETE</code> — uniquement <code>GET</code>.</li>
+  <li>❌ Pas de route « liste tous les chanteurs » : <code>q</code> est obligatoire sur <code>/api/chanteurs</code>.</li>
   <li>❌ Pas de pagination : toutes les réponses tiennent en un seul appel.</li>
   <li>❌ Pas de recherche par sous-chaîne : <code>q=del</code> ne trouve pas « Adele », seulement <code>q=ade</code>.</li>
   <li>❌ Pas de gestion des accents : <code>q=adele</code> ne matche pas « Adèle ».</li>
   <li>❌ Pas de tri ni de filtre avancé (par genre, par année…).</li>
-  <li>❌ Pas de <code>POST /api/lyrics</code> pour modifier des paroles.</li>
-  <li>❌ Pas de CORS à gérer : l'API est appelée depuis la même origine que la page.</li>
+  <li>❌ Pas de modification des données (pas d'écriture).</li>
+  <li>❌ Pas d'authentification réelle : les clés sont publiques et obfusquées.</li>
 </ul>
 
 <h2 id="exemple">Exemple complet</h2>
@@ -405,9 +488,11 @@ https://edu-fpar.github.io/services/musique/images/albums/{nom-fichier}.jpg</cod
   const CLE = "demo_pro_0002";
   const headers = { "Authorization": "Bearer " + CLE };
 
-  // 1. Chercher un chanteur
+  // 1. Chercher un chanteur (q est obligatoire)
   const res = await fetch("/api/chanteurs?q=ade", { headers });
   if (res.status === 401) throw new Error("Clé invalide");
+  if (res.status === 400) throw new Error("Paramètre q manquant");
+  if (res.status === 403) throw new Error("Accès refusé");
   const chanteurs = await res.json();
 
   // 2. Récupérer ses chansons
@@ -430,10 +515,10 @@ https://edu-fpar.github.io/services/musique/images/albums/{nom-fichier}.jpg</cod
   pour une vraie API REST : le jour où un vrai serveur existe, il suffit de retirer le script.
 </div>
 
-<hr style="margin: 3rem 0 1rem; border: none; border-top: 1px solid var(--border);">
-<p style="color: var(--muted); font-size: .85rem; text-align: center;">
+<hr>
+<footer>
   API de démonstration — dépôt <a href="https://github.com/edu-fpar/services">edu-fpar/services</a>
-</p>
+</footer>
 
 </div>
 </body>
