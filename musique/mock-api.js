@@ -6,7 +6,7 @@
  *
  * Usage :
  *   <script src="https://edu-fpar.github.io/services/musique/mock-api.js"></script>
- *   <script> /* votre code */ </script>
+ *   <script>  votre code  </script>
  *
  * Documentation complète : https://edu-fpar.github.io/services/musique/
  */
